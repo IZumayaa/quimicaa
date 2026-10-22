@@ -728,3 +728,263 @@ button {
         font-size: 12px;
     }
 }
+
+
+/* ===== MODELO ANIMADO DEL MUCÍLAGO ===== */
+
+.modelo-mucilago {
+  margin-top: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dce8dc;
+  border-radius: 18px;
+  color: #244333;
+  overflow: hidden;
+}
+
+.modelo-titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.etiqueta-ciencia {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #e6f3e7;
+  color: #34734b;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.modelo-titulo h2 {
+  margin: 12px 0 8px;
+  font-size: 23px;
+}
+
+.modelo-titulo p {
+  max-width: 540px;
+  margin: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #617469;
+}
+
+.tanque-animado {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 3px solid #90b9aa;
+  border-top: 0;
+  border-radius: 0 0 24px 24px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(208, 235, 232, .55),
+      rgba(133, 194, 184, .28)
+    );
+}
+
+.etiqueta-agua {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #46776d;
+  font-size: 12px;
+}
+
+.polisacarido {
+  position: absolute;
+  z-index: 3;
+  top: 75px;
+  left: 43%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  animation: mover-polisacarido 5s ease-in-out infinite;
+}
+
+.polisacarido span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #398c58;
+  color: white;
+  border: 4px solid #b9e1bd;
+  box-shadow: 0 0 14px #72b786;
+  font-size: 16px;
+}
+
+.polisacarido small {
+  padding: 4px 6px;
+  border-radius: 5px;
+  background: #ffffffed;
+  color: #286640;
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.impureza {
+  position: absolute;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #97744d;
+  border: 2px solid #c4a77e;
+  animation: caer-impureza 5s ease-in-out infinite;
+}
+
+.impureza-1 { left: 25%; top: 70px; }
+.impureza-2 { left: 68%; top: 80px; animation-delay: .2s; }
+.impureza-3 { left: 30%; top: 125px; animation-delay: .4s; }
+.impureza-4 { left: 74%; top: 130px; animation-delay: .6s; }
+
+.microbio {
+  position: absolute;
+  z-index: 2;
+  color: #8164a8;
+  font-size: 23px;
+  animation: caer-impureza 5s ease-in-out infinite;
+}
+
+.microbio-1 { left: 18%; top: 115px; animation-delay: .3s; }
+.microbio-2 { left: 81%; top: 65px; animation-delay: .5s; }
+
+.puentes {
+  position: absolute;
+  z-index: 1;
+  inset: 25px 0 40px;
+  width: 100%;
+  height: 210px;
+  overflow: visible;
+}
+
+.puentes path {
+  fill: none;
+  stroke: #3f9660;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 7 5;
+  animation: formar-puentes 5s ease-in-out infinite;
+}
+
+.sedimento {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(159, 133, 94, .23);
+  border-top: 2px solid #bca37e;
+}
+
+.sedimento span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #8e704e;
+}
+
+.sedimento small {
+  width: 100%;
+  text-align: center;
+  color: #765b3d;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.leyenda-mucilago {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 480px;
+  margin: 20px auto 0;
+  font-size: 12px;
+  color: #53665a;
+}
+
+.leyenda-mucilago > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.punto-leyenda {
+  display: inline-block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.punto-poli { background: #398c58; }
+.punto-impureza { background: #97744d; }
+.punto-microbio { background: #8164a8; }
+
+.linea-leyenda {
+  width: 20px;
+  flex: 0 0 20px;
+  border-top: 3px dashed #3f9660;
+}
+
+.nota-modelo {
+  max-width: 600px;
+  margin: 18px auto 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #68776c;
+  text-align: center;
+}
+
+@keyframes mover-polisacarido {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-25px, 18px); }
+  50% { transform: translate(20px, 28px); }
+  75% { transform: translate(-12px, 45px); }
+}
+
+@keyframes formar-puentes {
+  0%, 15% { opacity: 0; stroke-dashoffset: 30; }
+  35%, 75% { opacity: 1; stroke-dashoffset: 0; }
+  95%, 100% { opacity: 0; stroke-dashoffset: -30; }
+}
+
+@keyframes caer-impureza {
+  0%, 15% { transform: translateY(0); }
+  40% { transform: translateY(10px); }
+  70%, 90% { transform: translateY(115px); }
+  100% { transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .modelo-mucilago { padding: 16px 10px; }
+  .modelo-titulo h2 { font-size: 20px; }
+  .tanque-animado { height: 270px; }
+  .leyenda-mucilago { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .polisacarido,
+  .impureza,
+  .microbio,
+  .puentes path {
+    animation: none;
+  }
+}
+
