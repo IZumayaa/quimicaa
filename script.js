@@ -221,3 +221,4 @@ selectorDosis.addEventListener("change", () => {
 });
 
 reiniciarSimulacion();
+
