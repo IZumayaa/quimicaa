@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ratamiento de agua con nopal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="marca">CIENCIA Y SOSTENIBILIDAD</div>
+    <h1>Tratamiento de agua con mucílago de nopal</h1>
+    <p>Simulación de coagulación y filtración por gravedad</p>
+</header>
+
+<main>
+    <section class="panel">
+        <div class="encabezado">
+            <div>
+                <h2>Estación experimental</h2>
+                <p class="subtitulo">Agua turbia → tratamiento natural → filtración</p>
+            </div>
+            <span id="estado" class="estado">Preparado</span>
+        </div>
+
+        <div class="escena">
+            <div class="etapa etapa-1">
+                <span class="numero">01</span>
+                <h3>Agua turbia</h3>
+                <div class="vaso vaso-inicial">
+                    <div class="agua agua-sucia" id="aguaInicial">
+                        <div class="suspension" id="suspension"></div>
+                    </div>
+                    <span class="marca-vidrio">100 ml</span>
+                </div>
+                <p>Partículas suspendidas</p>
+            </div>
+
+            <div class="flecha">→</div>
+
+            <div class="etapa etapa-2">
+                <span class="numero">02</span>
+                <h3>Saco de mucílago</h3>
+                <div class="vaso vaso-tratamiento">
+                    <div class="agua agua-tratada" id="aguaTratada">
+                        <div class="floculos" id="floculos"></div>
+                    </div>
+                    <div class="saco" id="saco">
+                        <div class="relleno-saco"></div>
+                    </div>
+                    <span class="marca-vidrio">100 ml</span>
+                </div>
+                <p id="textoSaco">Saco sin sumergir</p>
+            </div>
+
+            <div class="flecha">→</div>
+
+            <div class="etapa etapa-3">
+                <span class="numero">03</span>
+                <h3>Papel filtro</h3>
+                <div class="embudo">
+                    <div class="papel-filtro"></div>
+                    <div class="agua-embudo" id="aguaEmbudo"></div>
+                    <div class="tallo-embudo"></div>
+                </div>
+                <div id="zonaGotas"></div>
+                <p>Retención de flóculos</p>
+            </div>
+
+            <div class="flecha">→</div>
+
+            <div class="etapa etapa-4">
+                <span class="numero">04</span>
+                <h3>Agua filtrada</h3>
+                <div class="vaso vaso-final">
+                    <div class="agua agua-limpia" id="aguaFinal"></div>
+                    <span class="marca-vidrio">100 ml</span>
+                </div>
+                <p>Agua recolectada</p>
+            </div>
+        </div>
+
+        <div class="controles">
+            <div class="control-dosis">
+                <label for="dosis">Dosis de mucílago (g/L)</label>
+                <select id="dosis">
+                    <option value="30">30 g/L</option>
+                    <option value="40" selected>40 g/L</option>
+                    <option value="50">50 g/L</option>
+                </select>
+                <small>Intervalo experimental propuesto: 30–50 g/L.</small>
+            </div>
+
+            <div class="botones">
+                <button id="tratar">1. Añadir saco y mezclar</button>
+                <button id="filtrar" disabled>2. Filtrar agua</button>
+                <button id="reiniciar" class="secundario">↻ Reiniciar</button>
+            </div>
+        </div>
+
+        <div class="progreso-contenedor">
+            <div class="fila-progreso">
+                <span id="fase">Esperando inicio del experimento</span>
+                <strong id="porcentaje">0%</strong>
+            </div>
+            <div class="barra-progreso">
+                <div id="progreso"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resultados">
+        <div class="titulo-seccion">
+            <h2>Resultados de la simulación</h2>
+            <p>Valores ilustrativos, no resultados medidos.</p>
+        </div>
+
+        <div class="tarjetas">
+            <article class="tarjeta">
+                <span>Turbidez inicial</span>
+                <strong id="turbidezInicial">100%</strong>
+                <small>Referencia visual</small>
+            </article>
+            <article class="tarjeta">
+                <span>Reducción estimada</span>
+                <strong id="reduccion">—</strong>
+                <small>Modelo ilustrativo</small>
+            </article>
+            <article class="tarjeta">
+                <span>Agua recolectada</span>
+                <strong id="volumen">0 ml</strong>
+                <small>Volumen simulado</small>
+            </article>
+        </div>
+
+        <div class="explicacion">
+            <h3 id="tituloExplicacion">¿Cómo funciona el proceso?</h3>
+            <p id="explicacion">
+                El agua contiene partículas suspendidas, como tierra y polvo.
+                Selecciona una dosis y comienza el tratamiento para observar
+                las etapas del prototipo PROSA.
+            </p>
+        </div>
+
+        <div class="advertencia">
+            <strong>Importante:</strong> el mucílago puede favorecer la
+            agregación de partículas, pero su eficacia depende de la
+            composición del agua, la dosis, el pH y la mezcla. La simulación
+            no demuestra una eficiencia real ni garantiza la eliminación
+            de metales pesados, microorganismos o sustancias disueltas.
+            El agua obtenida no debe beberse.
+        </div>
+    </section>
+</main>
+
+<footer>
+    PROSA · Aprovechamiento de recursos naturales para el tratamiento del agua
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

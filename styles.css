@@ -1,0 +1,730 @@
+
+:root {
+    --verde: #286b4b;
+    --verde-claro: #e6f1e8;
+    --azul: #3c9fc4;
+    --texto: #253b35;
+    --fondo: #f2f6f1;
+    --borde: #dce6de;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+header {
+    padding: 32px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(125deg, #174c38, #377e57);
+}
+
+.marca {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #c5e9ce;
+}
+
+header h1 {
+    margin: 14px 0 8px;
+    font-size: clamp(23px, 4vw, 36px);
+}
+
+header p {
+    margin: 0;
+    color: #e0f0e4;
+}
+
+main {
+    width: min(1250px, 95%);
+    margin: 25px auto;
+}
+
+.panel, .resultados {
+    padding: 24px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    margin-bottom: 22px;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+h2 {
+    margin: 0 0 8px;
+}
+
+.subtitulo, .titulo-seccion p {
+    margin: 0;
+    color: #718078;
+    font-size: 14px;
+}
+
+.estado {
+    background: var(--verde-claro);
+    color: var(--verde);
+    border-radius: 20px;
+    padding: 8px 13px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.escena {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 8px;
+    padding: 24px 8px;
+    margin-top: 20px;
+    background:
+        linear-gradient(#ffffffc9, #ffffffc9),
+        repeating-linear-gradient(
+            90deg, #d9e6df 0 1px, transparent 1px 35px
+        );
+    border: 1px solid var(--borde);
+    border-radius: 13px;
+    min-height: 350px;
+}
+
+.etapa {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+}
+
+.etapa h3 {
+    font-size: 14px;
+    min-height: 34px;
+}
+
+.etapa p {
+    color: #718078;
+    font-size: 12px;
+    min-height: 30px;
+}
+
+.numero {
+    display: inline-block;
+    color: var(--verde);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.flecha {
+    color: #6b9a79;
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+
+.vaso {
+    position: relative;
+    width: min(100%, 115px);
+    height: 145px;
+    margin: 0 auto;
+    border: 3px solid #8ba9b0;
+    border-top: 0;
+    border-radius: 0 0 14px 14px;
+    background: #e7f8ff55;
+    overflow: hidden;
+}
+
+.agua {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: height 1s, background 1s;
+}
+
+.agua-sucia {
+    height: 75%;
+    background:
+        radial-gradient(circle, #5b452e 1.5px, transparent 2.5px)
+        0 0 / 13px 12px,
+        radial-gradient(circle, #9d8157 2px, transparent 3px)
+        5px 6px / 19px 17px,
+        linear-gradient(#aa956e, #81704e);
+}
+
+.agua-tratada {
+    background: linear-gradient(#d3c6a4, #aa9974);
+}
+
+.agua-limpia {
+    background: linear-gradient(#b9e9f6, #64b8d9);
+}
+
+.suspension {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 25%, #513a25 2px, transparent 3px),
+        radial-gradient(circle at 60% 40%, #513a25 2px, transparent 3px),
+        radial-gradient(circle at 45% 75%, #513a25 2px, transparent 3px),
+        radial-gradient(circle at 80% 65%, #513a25 2px, transparent 3px),
+        radial-gradient(circle at 25% 85%, #513a25 2px, transparent 3px);
+    transition: opacity 1s;
+}
+
+.marca-vidrio {
+    position: absolute;
+    top: 10px;
+    right: 4px;
+    font-size: 9px;
+    color: #456d7c;
+    writing-mode: vertical-rl;
+}
+
+.saco {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 42px;
+    height: 60px;
+    border: 2px solid #d6c8a4;
+    border-radius: 5px 5px 12px 12px;
+    background: #f7f0dcdd;
+    animation: sumergir 1s ease;
+}
+
+.saco::before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 9px;
+    top: -7px;
+    left: 1px;
+    border-radius: 3px;
+    background: #dfd2b4;
+}
+
+.relleno-saco {
+    position: absolute;
+    inset: 12px 5px 5px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #568447 2px, transparent 3px)
+        0 0 / 9px 9px,
+        #a5b987;
+}
+
+@keyframes sumergir {
+    from { transform: translate(-50%, -25px); }
+    to { transform: translate(-50%, 0); }
+}
+
+.embudo {
+    position: relative;
+    width: 105px;
+    height: 125px;
+    margin: 10px auto 0;
+}
+
+.papel-filtro {
+    position: absolute;
+    z-index: 2;
+    left: 4px;
+    top: 5px;
+    width: 97px;
+    height: 72px;
+    background: #f6f0df;
+    border: 2px solid #c8bea6;
+    clip-path: polygon(0 0, 100% 0, 58% 100%, 42% 100%);
+}
+
+.embudo::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 45px;
+    border: 3px solid #8ba9b0;
+    background: #d7f1f5a0;
+    clip-path: polygon(0 0, 100% 0, 57% 100%, 43% 100%);
+}
+
+.tallo-embudo {
+    position: absolute;
+    top: 70px;
+    left: 44px;
+    width: 17px;
+    height: 53px;
+    border: 2px solid #8ba9b0;
+    background: #d7f1f5a0;
+}
+
+.agua-embudo {
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 26px;
+    width: 53px;
+    height: 0;
+    background: #b6a27b;
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+    transition: height 0.6s;
+}
+
+.floculos {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    background-image:
+        radial-gradient(ellipse, #5c4731 5px, transparent 6px),
+        radial-gradient(ellipse, #6d5236 7px, transparent 8px),
+        radial-gradient(ellipse, #826543 4px, transparent 5px);
+    background-size: 22px 21px, 29px 27px, 18px 20px;
+    background-position: 5px 8px, 16px 24px, 2px 35px;
+}
+
+#zonaGotas {
+    position: absolute;
+    pointer-events: none;
+}
+
+.gota {
+    position: relative;
+    width: 7px;
+    height: 11px;
+    background: #51b7e2;
+    border-radius: 50%;
+    animation: caer 0.8s linear infinite;
+}
+
+@keyframes caer {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(38px); opacity: 0.2; }
+}
+
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.control-dosis {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-dosis label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.control-dosis select {
+    padding: 10px;
+    background: white;
+    border: 1px solid #ccdacf;
+    border-radius: 8px;
+    color: var(--texto);
+}
+
+.control-dosis small {
+    color: #718078;
+    max-width: 260px;
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+button {
+    padding: 11px 14px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--verde);
+    color: white;
+}
+
+button:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+button.secundario {
+    color: var(--texto);
+    background: #e9efeb;
+}
+
+.progreso-contenedor {
+    margin-top: 25px;
+}
+
+.fila-progreso {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 9px;
+    font-size: 13px;
+}
+
+.barra-progreso {
+    height: 9px;
+    background: #e8efea;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#progreso {
+    height: 100%;
+    width: 0;
+    background: #3b9661;
+    transition: width 0.3s;
+}
+
+.titulo-seccion {
+    margin-bottom: 18px;
+}
+
+.titulo-seccion p {
+    margin-top: 6px;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 18px;
+    border-radius: 11px;
+    background: #f0f6f0;
+}
+
+.tarjeta span, .tarjeta small {
+    color: #6c7f72;
+    font-size: 12px;
+}
+
+.tarjeta strong {
+    color: var(--verde);
+    font-size: 25px;
+}
+
+.explicacion {
+    margin-top: 20px;
+    padding: 18px;
+    border-left: 4px solid #559568;
+    background: #f8faf7;
+    border-radius: 5px;
+    line-height: 1.65;
+}
+
+.explicacion h3 {
+    margin-top: 0;
+}
+
+.explicacion p {
+    margin-bottom: 0;
+    color: #586b60;
+}
+
+.advertencia {
+    margin-top: 18px;
+    padding: 14px;
+    border-left: 4px solid #d7a342;
+    background: #fff8e9;
+    color: #655638;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #718078;
+    font-size: 12px;
+}
+
+@media (max-width: 760px) {
+    .panel, .resultados {
+        padding: 15px;
+    }
+
+    .escena {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .flecha {
+        display: none;
+    }
+
+    .etapa h3 {
+        font-size: 13px;
+    }
+
+    .controles {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .botones {
+        flex-direction: column;
+    }
+
+    .botones button {
+        width: 100%;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* ===== ADAPTACIÓN PARA CELULARES ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden;
+}
+
+button,
+select {
+    font: inherit;
+    touch-action: manipulation;
+}
+
+button {
+    min-height: 46px;
+}
+
+/* Tablets y celulares */
+@media (max-width: 760px) {
+    header {
+        padding: 25px 16px;
+    }
+
+    header h1 {
+        font-size: 25px;
+        line-height: 1.3;
+    }
+
+    header p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .marca {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    main {
+        width: calc(100% - 20px);
+        margin: 12px auto;
+    }
+
+    .panel,
+    .resultados {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .encabezado {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .encabezado h2,
+    .titulo-seccion h2 {
+        font-size: 20px;
+    }
+
+    .subtitulo {
+        line-height: 1.5;
+    }
+
+    /* Las cuatro etapas se acomodan en dos columnas */
+    .escena {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 6px;
+        padding: 16px 8px;
+        min-height: auto;
+    }
+
+    .etapa {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 2px;
+    }
+
+    .etapa h3 {
+        font-size: 13px;
+        min-height: 20px;
+        margin: 8px 0;
+    }
+
+    .etapa p {
+        font-size: 11px;
+        line-height: 1.4;
+        min-height: 30px;
+    }
+
+    .flecha {
+        display: none;
+    }
+
+    .vaso {
+        width: 90px;
+        max-width: 100%;
+        height: 120px;
+    }
+
+    .embudo {
+        transform: scale(0.9);
+        transform-origin: top center;
+        margin-bottom: -10px;
+    }
+
+    .controles {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .control-dosis {
+        width: 100%;
+    }
+
+    .control-dosis select {
+        width: 100%;
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    .control-dosis small {
+        line-height: 1.5;
+    }
+
+    .botones {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .botones button {
+        width: 100%;
+        min-height: 48px;
+        font-size: 14px;
+    }
+
+    .fila-progreso {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .tarjeta {
+        padding: 15px;
+    }
+
+    .tarjeta strong {
+        font-size: 24px;
+    }
+
+    .explicacion {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .advertencia {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    footer {
+        padding: 20px 14px;
+        line-height: 1.5;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 380px) {
+    header h1 {
+        font-size: 22px;
+    }
+
+    .panel,
+    .resultados {
+        padding: 11px;
+    }
+
+    .escena {
+        padding: 10px 4px;
+        gap: 8px 2px;
+    }
+
+    .vaso {
+        width: 76px;
+        height: 110px;
+    }
+
+    .embudo {
+        transform: scale(0.78);
+        margin-bottom: -20px;
+    }
+
+    .etapa h3 {
+        font-size: 12px;
+    }
+
+    .estado {
+        font-size: 12px;
+    }
+}
